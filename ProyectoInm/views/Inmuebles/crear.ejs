@@ -1,0 +1,65 @@
+<%- include ../layouts/cabecera.ejs %>  
+
+<div class="card">
+    <div class="card-header">
+        Formulario de captura
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos de inmueble</h5>
+        <p class="card-text">
+
+            <form method="post" action="/inmuebles">
+                <div class="form-group">
+                    <label for="my-input">Nombre</label>
+                    <input id="my-input" class="form-control" type="text" name="nombreInmueble">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">Dirección</label>
+                    <input id="my-input" class="form-control" type="text" name="direccionInmueble">
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Zona</label>
+                    <input id="my-input" class="form-control" type="text" name="zonaInmueble">
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Precio</label>
+                    <input id="my-input" class="form-control" type="text" name="precioInmueble">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">estado</label>
+                    <input id="my-input" class="form-control" type="text" name="estadoInmueble">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">Municipio</label>
+                    <input id="my-input" class="form-control" type="text" name="municipioInmueble">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">Depósito</label>
+                    <input id="my-input" class="form-control" type="text" name="depositoInmueble">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">NoDeposito</label>
+                    <input id="my-input" class="form-control" type="text" name="noDepositoInmueble">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">User</label>
+                    <input id="my-input" class="form-control" type="text" name="userInmueble">
+                </div>
+                <button class="btn btn-success" type="submit">Guardar</button>
+                <a class="btn btn-primary" href="/anuncios">Cancelar</a>
+            </form>
+
+        </p>
+    </div>
+</div>
+
+
+<%- include ../layouts/pie.ejs %>   
