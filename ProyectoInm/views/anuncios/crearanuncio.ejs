@@ -10,34 +10,6 @@
 
             <form method="post" action="/anuncios" enctype="multipart/form-data">
                 
-                    <label for="my-input">Inmueble</label>
-                    <input type="text" name="idInmueble" id="idInmueble" value="">
-                    <select id="s1" onchange="otracosa();" class="form-control form-control-lg">
-                        <option value=0 >Seleccione inmueble</option>
-                        <% for( let inm = 0; inm < anuncioInmuebles.length; inm++ ) { %>                            
-                            <option value=<%=anuncioInmuebles[inm].idInmueble %>><%=anuncioInmuebles[inm].nombre %></option>
-                        <% } %>                        
-                    </select>
-
-                      <script>
-                          var elemento = document.getElementById("s1");
-                          var inmm = document.getElementById("idInmueble");
-                          inmm = elemento.value;
-                          function otracosa(e) {
-                              //alert(elemento.value);
-                              document.getElementById("idInmueble").value=elemento.value;
-                          }
-                      </script> 
-                      
-                      <select id="s2" class="form-control form-control-lg">
-                        <option value=0 >Seleccione Departamento</option>
-                        <% for( let inm = 0; inm < anuncioInmuebles.length; inm++ ) { %>                            
-                            <option value=<%=anuncioInmuebles[inm].idDepartamento %>><%=anuncioInmuebles[inm].idDepartamento %></option>
-                        <% } %>                       
-                    </select>
-
-                     
-                  
                 <div class="form-group">
                     <label for="my-input">Ubicacion</label>
                     <input id="my-input" class="form-control" type="text" name="direccion">

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/stylesheets/loginStyle.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Login Page</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-7 image-left">
+                    
+                </div>
+                <div class="col-5">
+                    <div>
+                        <% if(errors !== " "){%>
+                          <% errors.forEach(function(item) { %>
+                            <div class="alert alert-danger">
+                              <%- item%>
+                            </div>
+                            <%})%>
+                        <%}%>
+                      </div>
+                    <form method="post" action="/login">
+                        <div class="form-group">
+                          <label for="email">Email address:</label>
+                          <input type="email" class="form-control" id="email" name="email" placeholder="Ingresar email">
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                      </form>
+                      <hr>
+                      <div>
+                          <div>
+                              Si no posees una cuenta. <a href="/register">Crea una cuenta nueva.</a>
+                          </div>
+                          <div>Regresar a <a href="/">página de inicio</a></div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

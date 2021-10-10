@@ -11,6 +11,9 @@ module.exports = {
     obtenerDepartamento:function (conexion, funcion) {
         conexion.query("SELECT * FROM departamento",funcion);
     },
+    obtenerMunicipio:function (conexion, funcion) {
+        conexion.query("SELECT * FROM municipio",funcion);
+    },
     retornarDatosID:function (conexion, id, funcion) {
         conexion.query("SELECT * FROM ANUNCIOS WHERE idAnuncios = ?",[id], funcion);
     },

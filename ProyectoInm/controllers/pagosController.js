@@ -8,9 +8,6 @@ module.exports = {
             console.log(datos);
             res.render('usuarioNormal/pagos', { title: 'Pagos', pagos:datos });
         });
-    },
-    reservacion: function(req, res){
-        res.render('usuarioNormal/reservacion', { title: 'reservacion'});
-    },
+    }
     
 }

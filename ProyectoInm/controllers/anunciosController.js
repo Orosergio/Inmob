@@ -15,9 +15,12 @@ module.exports = {
         anuncio.obtenerInmueble(conexion,function (err,datos) {
             //console.log(datos);
             anuncio.obtenerDepartamento(conexion, function (err, datos2) {
-                console.log(datos.concat(datos2));
-                //console.log(datos2);
-                res.render('anuncios/crearanuncio',{title:'crearanuncio', anuncioInmuebles:datos.concat(datos2)});
+                //console.log(datos.concat(datos2));
+                anuncio.obtenerMunicipio(conexion, function (err, datos3) {
+                    console.log(datos.concat(datos2).concat(datos3));
+                    res.render('anuncios/crearanuncio',{title:'crearanuncio', anuncioInmuebles:datos, anuncioDeps:datos2, anuncioMuns:datos3});
+                });
+                
             });
              
         });        
