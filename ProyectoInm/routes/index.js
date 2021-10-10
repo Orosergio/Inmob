@@ -10,10 +10,8 @@ const indexController = require('../controllers/indexController');
 initPassportLocal();
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.send("Bienvenido a InmoGuateP");
-});
-router.get('/login',loginController.getLoginPage);
+router.get('/', loginController.checkLoggedIn, indexController.getHomePage);
+router.get('/login', loginController.checkLoggedOut,loginController.getLoginPage);
 router.post('/login', passport.authenticate('local.signin',{
   successRedirect: '/',
   failureRedirect: '/login',
