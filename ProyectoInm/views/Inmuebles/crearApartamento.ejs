@@ -1,0 +1,54 @@
+<%- include ../layouts/cabecera.ejs %>  
+
+<div class="card">
+    <div class="card-header">
+        Formulario de captura
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos de Apartamento</h5>
+        <p class="card-text">
+
+            <form method="post" action="/apartamentos" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="my-input">Nombre</label>
+                    <input id="my-input" class="form-control" type="text" name="nombreApartamento">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">Altura</label>
+                    <input id="my-input" class="form-control" type="text" name="alturaApartamento">
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Tamaño en metros cuadrados</label>
+                    <input id="my-input" class="form-control" type="text" name="sizeApartamento">
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Precio</label>
+                    <input id="my-input" class="form-control" type="text" name="precioApartamento">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">Inmueble</label>
+                    <input id="my-input" class="form-control" type="text" name="inmuebleApartamento">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">estado</label>
+                    <input id="my-input" class="form-control" type="text" name="estadoApartamento">
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Imagen</label>
+                    <input id="my-input" class="form-control-file" type="file" name="archivo">
+                </div>
+                
+                <button class="btn btn-success" type="submit">Guardar</button>
+                <a class="btn btn-primary" href="/apartamentos">Cancelar</a>
+            </form>
+        </p>
+    </div>
+</div>
+
+<%- include ../layouts/pie.ejs %>

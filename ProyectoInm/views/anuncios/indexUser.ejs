@@ -11,34 +11,25 @@
 <body>
     <%- include ../layouts/cabecera.ejs %>  
     <br><br>
-
-
-    
     
     <div class="row">
-        <% for( let anuncio = 0; anuncio < anuncios.length; anuncio++ ) { %>
+        <% for( let anuncio = 0; anuncio < anunciosU.length; anuncio++ ) { %>
             
         <div class="col-sm-3">
             <br>
           <div class="card text-white bg-dark mb-3">
-            <img height="200" src="images/anuncios/<%=anuncios[anuncio].imagenAnuncio %>" class="card-img-top" alt="...">
+            <img height="200" src="/images/anuncios/<%=anunciosU[anuncio].imagenAnuncio%>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"> <%=anuncios[anuncio].titulo %></h5>
-              <p class="card-text"><%=anuncios[anuncio].descripcion %></p>
-              <p class="card-text">Dirección: <%=anuncios[anuncio].direccion %></p>
+              <h5 class="card-title"> <%=anunciosU[anuncio].titulo %></h5>
+              <p class="card-text"><%=anunciosU[anuncio].descripcion %></p>
+              <p class="card-text">Dirección: <%=anunciosU[anuncio].direccion %></p>
              
               <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                <form class="form-inline" method="get" action="/anuncios/editar/<%=anuncios[anuncio].idAnuncios%>">
-                  <button class="btn btn-warning" type="submit">Editar</button>
+                <form class="form-inline" method="get" action="/anuncios/reservacion/<%=anunciosU[anuncio].idAnuncios%>">
+                  <button class="btn btn-primary" type="submit">Más información</button>
                 </form>
               </div>
-              <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                <form class="form-inline" method="post" action="/anuncios/eliminar/<%=anuncios[anuncio].idAnuncios%>">
-                  <button class="btn btn-danger" type="submit">Eliminar</button>
-                </form>
-              </div>
-
-              
+                           
               
             </div>
           </div>

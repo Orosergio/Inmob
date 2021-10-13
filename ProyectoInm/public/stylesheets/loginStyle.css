@@ -7,19 +7,26 @@
 }
 
 .image-left{
-    background-image: url('/images/Building.jpg');
+    background-image: url('/images/realEstate.jpg');
     height: 600px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
     opacity: 0.9;
-    border-radius: 3px;
+    border-radius: 15px;
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
 }
-
+div.container {
+    text-align: center;
+    padding: 10px 20px;
+  }
 body{
-    background: #36D1DC;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     
 }

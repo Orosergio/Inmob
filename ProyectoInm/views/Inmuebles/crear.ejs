@@ -8,7 +8,7 @@
         <h5 class="card-title">Datos de inmueble</h5>
         <p class="card-text">
 
-            <form method="post" action="/inmuebles">
+            <form method="post" action="/inmuebles" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="my-input">Nombre</label>
                     <input id="my-input" class="form-control" type="text" name="nombreInmueble">
@@ -35,11 +35,6 @@
                 </div>
             
                 <div class="form-group">
-                    <label for="my-input">Municipio</label>
-                    <input id="my-input" class="form-control" type="text" name="municipioInmueble">
-                </div>
-            
-                <div class="form-group">
                     <label for="my-input">Depósito</label>
                     <input id="my-input" class="form-control" type="text" name="depositoInmueble">
                 </div>
@@ -50,16 +45,29 @@
                 </div>
             
                 <div class="form-group">
-                    <label for="my-input">User</label>
-                    <input id="my-input" class="form-control" type="text" name="userInmueble">
+                    <label id="labelprueba" for="my-input">User</label>
+                    <input id="userInmueble" class="form-control" type="text" name="userInmueble">
                 </div>
-                <button class="btn btn-success" type="submit">Guardar</button>
-                <a class="btn btn-primary" href="/anuncios">Cancelar</a>
-            </form>
 
+                <div class="form-group">
+                    <label for="my-input">Imagen</label>
+                    <input id="my-input" class="form-control-file" type="file" name="archivo">
+                </div>
+                
+                <button class="btn btn-success" type="submit">Guardar</button>
+                <a class="btn btn-primary" href="/inmuebles">Cancelar</a>
+            </form>
         </p>
     </div>
 </div>
 
+<script>
+     obtener_localStorege();
+                function obtener_localStorege() {
+                    let userIdL = localStorage.getItem("idUserL");
+                    //alert("retrieve localstorage: " + userIdL);
+                    document.getElementById('userInmueble').value = userIdL;
+                }
+</script>
 
-<%- include ../layouts/pie.ejs %>   
+<%- include ../layouts/pie.ejs %>

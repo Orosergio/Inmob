@@ -1,0 +1,115 @@
+<%- include ../layouts/cabecera.ejs %>   
+<br><br>
+<div class="card">
+    <div class="card-header">
+        Formulario de captura
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos de Reservación</h5>
+        <p class="card-text">
+
+            <form method="post" action="../reservar/" enctype="multipart/form-data">
+                <input type="text" name="id" value="<%=anuncio.idAnuncios%>">
+
+                <input type="text" name="tipoAlquiler" value="1">
+
+                <div class="form-group">
+                    <label for="my-input">Titulo</label>
+                    <input id="my-input" value="<%=anuncio.titulo%>" class="form-control" type="text" name="titulo">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">Descripcion</label>
+                    <input id="my-input" value="<%=anuncio.descripcion%>" class="form-control" type="text" name="descripcion">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">Ubicacion</label>
+                    <input id="my-input" value="<%=anuncio.direccion%>" class="form-control" type="text" name="direccion">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">Imagen</label>
+                    <img class="rounded mx-auto d-block"src="../../images/anuncios/<%=anuncio.imagenAnuncio%>" width="400" alt="">
+                    
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Correo de contacto</label>
+                    <input id="my-input" value="<%=anuncio.emailAnunciante%>" class="form-control" type="text" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">telefono de contacto</label>
+                    <input id="my-input" value="<%=anuncio.telefono%>" class="form-control" type="text" name="telefono">
+                </div>
+                      
+                <div class="form-group">
+                    <label for="my-input">Youtube Video</label>
+                    <input id="my-input" value="<%=anuncio.youtubeVideo%>" class="form-control" type="text" name="youtube">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="my-input">Inmueble</label>
+                        <input id="my-input" value="<%=anuncio.idInmueble%>" class="form-control" type="text" name="inmueble">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="my-input">Nivel</label>
+                        <input id="my-input" value="<%=anuncio.idPiso%>" class="form-control" type="text" name="nivel">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="my-input">Habitacion</label>
+                        <input id="my-input" value="<%=anuncio.idHab%>" class="form-control" type="text" name="habitacion">
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="my-input">Precio</label>
+                    <input id="my-input" value="<%=anuncio2.precio%>" class="form-control" type="text" name="precio">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">ID Usuario</label>
+                    <input id="usuarioR" value="" class="form-control" type="text" name="usuarioR">
+                </div>
+                
+                <label for="my-input">>-----------------------------------------------------------------------------------</label>
+                
+                <div>
+                    <label for="my-input">Fecha de Ingreso</label>
+                    <input type="date" id="start" name="fechaBoletaStart"
+                       value="2021-09-25"
+                       min="2020-01-01" max="2025-12-31">
+                </div>
+
+                <div>
+                    <label for="my-input">Fecha de Cobro</label>
+                    <input type="date" id="payment" name="fechaBoletaPayment"
+                    value="2021-09-25"
+                    min="2020-01-01" max="2025-12-31">
+                </div>                
+
+                <button class="btn btn-success" type="submit">Hacer reservación</button>
+                <a class="btn btn-primary" href="/anuncios/IndexUser">Cancelar</a>
+            
+            </form>
+
+        </p>
+        
+    </div>
+</div>
+
+<script>
+    obtener_localStorege();
+                function obtener_localStorege() {
+                    let userIdL = localStorage.getItem("idUserL");
+                    //alert("retrieve localstorage: " + userIdL);
+                    document.getElementById('usuarioR').value = userIdL;
+                    
+                    document.getElementById('start').value= new Date().toISOString().substring(0, 10);
+                    document.getElementById('payment').value= new Date().toISOString().substring(0, 10);                    
+                }
+</script>
+
+<%- include ../layouts/pie.ejs %>   

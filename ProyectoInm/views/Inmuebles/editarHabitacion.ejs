@@ -1,0 +1,51 @@
+<%- include ../layouts/cabecera.ejs %>  
+
+<div class="card">
+    <div class="card-header">
+        Formulario de captura
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos de Habitacion</h5>
+        <p class="card-text">
+
+            <form method="post" action="../actualizar/" enctype="multipart/form-data">
+                <input type="text" name="id" value="<%=habitacion.idHabitacion%>">
+                <div class="form-group">
+                    <label for="my-input">Nombre</label>
+                    <input id="my-input" value="<%=habitacion.nombre%>" class="form-control" type="text" name="nombreHabitacion">
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Tamaño en metros cuadrados</label>
+                    <input id="my-input" value="<%=habitacion.size%>" class="form-control" type="text" name="sizeHabitacion">
+                </div>
+                
+                <div class="form-group">
+                    <label for="my-input">Precio</label>
+                    <input id="my-input" value="<%=habitacion.precio%>" class="form-control" type="text" name="precioHabitacion">
+                </div>
+            
+                <div class="form-group">
+                    <label for="my-input">Apartamento</label>
+                    <input id="my-input" value="<%=habitacion.idNivel%>" class="form-control" type="text" name="ApartamentoHabitacion">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">estado</label>
+                    <input id="my-input" value="<%=habitacion.estado%>" class="form-control" type="text" name="estadoHabitacion">
+                </div>
+
+                <div class="form-group">
+                    <label for="my-input">Imagen</label>
+                    <img class="img-thumbnail" src="../../images/habitaciones/<%=habitacion.fotografia%>" width="100" alt="">
+                    <input id="my-input" class="form-control-file" type="file" name="archivo">
+                </div>
+                
+                <button class="btn btn-success" type="submit">Actualizar</button>
+                <a class="btn btn-primary" href="/habitaciones">Cancelar</a>
+            </form>
+        </p>
+    </div>
+</div>
+
+<%- include ../layouts/pie.ejs %>

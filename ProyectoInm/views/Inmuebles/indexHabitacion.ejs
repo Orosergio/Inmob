@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <title>Catálogo de Inmuebles</title>
+    <title>Catálogo de Habitaciones</title>
 </head>
 <body>
     <%- include ../layouts/cabecera.ejs %>  
@@ -13,34 +13,32 @@
       
         <br/>
         <br/>
-        <a href="/inmuebles/crear" class="btn btn-primary" type="button">Crear un nuevo inmueble</a>
+        <a href="/habitaciones/crearHabitacion" class="btn btn-primary" type="button">Crear una nueva habitación</a>
         <br/>
         <br/>
         
         
         <div class="row">
-            <% for( let inmueble = 0; inmueble < inmuebles.length; inmueble++ ) { %>
+            <% for( let habitacion = 0; habitacion < habitaciones.length; habitacion++ ) { %>
                 
             <div class="col-sm-3">
                 <br>
               <div class="card text-white bg-dark mb-3">
-                <img height="200" src="images/inmuebles/<%=inmuebles[inmueble].imagen %>" class="card-img-top" alt="...">
+                <img height="200" src="images/habitaciones/<%=habitaciones[habitacion].fotografia %>" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title"> <%=inmuebles[inmueble].nombre %></h5>
-                  <p class="card-text"><td> Dirección: <%=inmuebles[inmueble].direccion %> </td></p>
-                  <p class="card-text"> Precio de alquiler: Q.<%=inmuebles[inmueble].precio %></p>
-                  <p class="card-text"> Depósito requerido: Q.<%=inmuebles[inmueble].deposito %></p>
-                  <p class="card-text"> No. Pagos para depósito: <%=inmuebles[inmueble].noDepositos %></p>
-                  <p class="card-text"> Administrador: <%=inmuebles[inmueble].Usuario %> </p>
+                  <h5 class="card-title"> <%=habitaciones[habitacion].nombre %></h5>
+                  <p class="card-text"> Tamaño: <%=habitaciones[habitacion].size %> M2.</p>
+                  <p class="card-text"> Precio: Q.<%=habitaciones[habitacion].precio %></p>
+                  <p class="card-text"> Apartamento: <%=habitaciones[habitacion].NivelName %></p>
                   
                   
                   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <form class="form-inline" method="get" action="/inmuebles/editar/<%=inmuebles[inmueble].idInmueble %>">
+                    <form class="form-inline" method="get" action="/habitaciones/editarHabitacion/<%=habitaciones[habitacion].idHabitacion %>">
                       <button class="btn btn-warning" type="submit">Editar</button>
                     </form>
                   </div>
                   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                    <form class="form-inline" method="post" action="/inmuebles/eliminar/<%=inmuebles[inmueble].idInmueble %>">
+                    <form class="form-inline" method="post" action="/habitaciones/eliminar/<%=habitaciones[habitacion].idHabitacion %>">
                       <button class="btn btn-danger" type="submit">Borrar</button>
                     </form>
                   </div>

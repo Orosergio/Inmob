@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const anunciosController = require("../controllers/anunciosController");
+const loginController = require("../controllers/loginController");
 
 var multer = require('multer');
 var fecha = Date.now();
@@ -20,13 +21,18 @@ var rutaAlmacen = multer.diskStorage(
 var cargar = multer({storage:rutaAlmacen});
 
 
-router.get('/', anunciosController.index);
-router.get('/crearanuncio', anunciosController.crear);
+router.get('/', loginController.checkLoggedIn, anunciosController.index);
+router.get('/crearanuncio', loginController.checkLoggedIn, anunciosController.crear);
 router.post("/",cargar.single("archivo"),anunciosController.guardar);
-router.post('/eliminar/:id', anunciosController.eliminar);
+router.post('/eliminar/:id', loginController.checkLoggedIn, anunciosController.eliminar);
 
-router.get('/editar/:id', anunciosController.editar);
+router.get('/editar/:id', loginController.checkLoggedIn, anunciosController.editar);
+router.get('/reservacion/:id', loginController.checkLoggedIn, anunciosController.reservacion);
 
-router.post("/actualizar",cargar.single("archivo"),anunciosController.actualizar);
+router.get('/IndexUser', loginController.checkLoggedIn, anunciosController.indexUser);
+
+router.post("/actualizar", cargar.single("archivo"),anunciosController.actualizar);
+
+router.post("/reservar", cargar.single("archivo"),anunciosController.reservar);
 
 module.exports = router;

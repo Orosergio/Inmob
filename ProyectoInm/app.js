@@ -13,6 +13,8 @@ var inmueblesRouter = require('./routes/inmuebles');
 var pagosRouter = require('./routes/pagos');
 var pagosInmuebleRouter = require('./routes/pagosInmueble');
 var anunciosRouter = require('./routes/anuncios');
+var apartamentosRouter = require('./routes/apartamentos');
+var habitacionesRouter = require('./routes/habitaciones');
 
 var app = express();
 require('./controllers/passportLocalController');
@@ -51,6 +53,8 @@ app.use('/inmuebles', inmueblesRouter);
 app.use('/pagos', pagosRouter);
 app.use('/pagosInmueble', pagosInmuebleRouter);
 app.use('/anuncios', anunciosRouter);
+app.use('/apartamentos', apartamentosRouter);
+app.use('/habitaciones', habitacionesRouter);
 
 
 

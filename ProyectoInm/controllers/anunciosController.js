@@ -54,6 +54,33 @@ module.exports = {
             res.render('anuncios/editar',{anuncio:registros[0]});
         });
     },
+    reservacion:function (req, res) {
+        
+        anuncio.retornarDatosID(conexion,req.params.id,function (err,registros) {
+
+            if(registros[0].idHab != 0){
+                anuncio.retornarDatosHABID(conexion, req.params.id, function (err, registros2) {
+                    console.log(registros[0]);
+                    console.log(registros2[0]);
+                    res.render('anuncios/crearReservacion',{anuncio:registros[0], anuncio2:registros2[0]});
+                }); 
+            }else if(registros[0].idPiso != 0){
+                anuncio.retornarDatosNIVID(conexion, req.params.id, function (err, registros2) {
+                    console.log(registros[0]);
+                    console.log(registros2[0]);
+                    res.render('anuncios/crearReservacion',{anuncio:registros[0], anuncio2:registros2[0]});
+                });  
+            }else if(registros[0].idInmueble != 0){
+                anuncio.retornarDatosINMID(conexion, req.params.id, function (err, registros2) {
+                    console.log(registros[0]);
+                    console.log(registros2[0]);
+                    res.render('anuncios/crearReservacion',{anuncio:registros[0], anuncio2:registros2[0]});
+                });  
+            }
+
+                      
+        });
+    },
     actualizar:function name(req, res) {
         console.log(req.body.titulo);
         
@@ -74,5 +101,18 @@ module.exports = {
             anuncio.actualizar(conexion, req.body, function (err) { });
             }
         res.redirect('/anuncios');
+    },
+    reservar: function name(req, res) {
+        anuncio.insertarReservacion(conexion, req.body, function (err) {
+            res.redirect('/anuncios');
+       });
+        res.redirect('/pagos');
+    },
+    indexUser: function (req, res) {
+        console.log(req.body.titulo);
+        anuncio.obtener(conexion,function (err,datos) {
+            console.log(datos);
+            res.render('anuncios/IndexUser',{title:'AnunciosUser', anunciosU:datos});
+        });
     }
 }
