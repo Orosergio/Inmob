@@ -8,6 +8,7 @@ module.exports = {
         habitacion.obtener(conexion, function (err, datos) {
             console.log(datos);
             res.render('Inmuebles/indexHabitacion', { title: 'Habitaciones', habitaciones:datos });
+           
         });
     },
     crear:function (req, res) {

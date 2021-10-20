@@ -7,6 +7,7 @@ module.exports = {
         
         apartamento.obtener(conexion, function (err, datos) {
             console.log(datos);
+            
             res.render('Inmuebles/indexApartamento', { title: 'Apartamentos', apartamentos:datos });
         });
     },

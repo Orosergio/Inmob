@@ -18,3 +18,4 @@ module.exports = {
         conexion.query("UPDATE INMUEBLE SET imagen = ? WHERE idInmueble = ?",[archivo.filename, datos.id], funcion);
     }
 }
+
