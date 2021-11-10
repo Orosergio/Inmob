@@ -18,8 +18,9 @@ var rutaAlmacen = multer.diskStorage({
 var cargar = multer({storage:rutaAlmacen});
 
 /* GET home page. */
-router.get('/',loginController.checkLoggedIn, apartamentosController.index);
 router.get('/crear', loginController.checkLoggedIn, apartamentosController.crear);
+router.get('/:id',loginController.checkLoggedIn, apartamentosController.index);
+
 
 //aqui recibo información desde crear
 router.post("/", cargar.single("archivo") ,apartamentosController.guardar);

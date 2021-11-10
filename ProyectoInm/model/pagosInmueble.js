@@ -18,6 +18,5 @@ module.exports = {
     actualizarArchivo:function(conexion, datos, archivo, funcion){
         
         conexion.query("UPDATE CONTROLALQUILER SET boletaPago = ? WHERE idControl =? ",[archivo.filename, datos.idControl], funcion);
-    }
-    
+    }    
 }

@@ -11,57 +11,67 @@
 <body>
   <div>
     <h2>Bienvenido/a " <%= user.nombreUsuario%> "</h2>
-    <label for="my-input" hidden="true" id="rolInput"><%= user.rol%></label>
-    <label for="my-input" hidden="true" id="idUserInput"><%= user.idUsuario%></label>
-
-    <script>
-        var valueRol = document.getElementById('rolInput').innerHTML;
-        var valueIdUsuario = document.getElementById('idUserInput').innerHTML;       
-        localStorage.setItem("rolUser", valueRol);
-        localStorage.setItem("idUserL", valueIdUsuario);
-        
-    </script>
-
+    <label for="my-input"  id="rolInput"><%= user.rol%></label>
+    <label for="my-input"  id="idUserInput"><%= user.idUsuario%></label>
+    
       <div class="container">
          
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="idA">
             <a class="navbar-brand" href="/">Inmobiliaria</a>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/pagos"> Reservaciones </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/pagosInmueble"> PagosInmueble <span class="sr-only">(current)</span></a>
-                    </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/anuncios/IndexUser"> Anuncios <span class="sr-only">(current)</span></a>
+                </li>
+
+                <% if (user.rol == 0) { %>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Inmuebles
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="/inmuebles/"  onclick="location.href=this.href+valorUsuario;return false;">Catálogo de Inmuebles</a>
+                      <a class="dropdown-item" href="/apartamentos/" onclick="location.href=this.href+valorUsuario;return false;">Catálogo de Apartamentos</a>
+                      <a class="dropdown-item" href="/habitaciones/" onclick="location.href=this.href+valorUsuario;return false;">Catálogo de habitaciones</a>
+                    </div>                  
+                  </div>
+                  <%} else { %>
+                  
+                  <% } %>
+
+                
+ 
+                 <li class="nav-item active">
+                      <a class="nav-link" href="/pagosInmueble"> PagosInmueble <span class="sr-only">(current)</span></a>
+                 </li>
+
+                 <% if (user.rol == 0) { %>
+                  <li class="nav-item active">
+                  <a class="nav-link" href="/pagos"> Reservaciones </a>
+                  </li>
+                  <%} else { %>
+                  
+                  <% } %>
+
+                  <% if (user.rol == 0) { %>
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Inmuebles
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="/inmuebles">Catálogo de Inmuebles</a>
-                          <a class="dropdown-item" href="/apartamentos">Catálogo de Apartamentos</a>
-                          <a class="dropdown-item" href="/habitaciones">Catálogo de habitaciones</a>
-                        </div>
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Anuncios Admin
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/anuncios">Catálogo de Anuncios</a>
+                        <a class="dropdown-item" href="/anuncios/crearanuncio">Crear anuncios</a>
                       </div>
-                   
-                      <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Anuncios Admin
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="/anuncios">Catálogo de Anuncios</a>
-                          <a class="dropdown-item" href="/anuncios/crearanuncio">Crear anuncios</a>
-                        </div>
-                      </div>
+                    </div>
+                    <%} else { %>
                     
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/anuncios/IndexUser"> Anuncios Usuario <span class="sr-only">(current)</span></a>
-                    </li>
+                    <% } %>
+                    
+                      
+                    
                 </ul>
                 <form method="post" action="/logout">
                     <button class="btn btn-dark"> Log Out</button>
@@ -69,12 +79,21 @@
             </div>
         </nav>
       </div>
+
+
+     
   </div>
   
-  <div>
-      <p id="anuncio"> BIENVENIDO A INMOBGUATE, ADELANTE, NAVEGA.</p>
-  </div>
-  
+  <p id="anuncio"> Bienvenido a GTInmobilia.</p>
+  <script>
+   
+    var valueRol = document.getElementById('rolInput').innerHTML;
+    var valueIdUsuario = document.getElementById('idUserInput').innerHTML;       
+    localStorage.setItem("rolUser", valueRol);
+    localStorage.setItem("idUserL", valueIdUsuario);
+    var valorUsuario = localStorage.getItem("idUserL");
+    
+</script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>

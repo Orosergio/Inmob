@@ -5,7 +5,7 @@ var borrar = require("fs");
 module.exports = {
     index: function(req, res){
         
-        habitacion.obtener(conexion, function (err, datos) {
+        habitacion.obtener(conexion, req.params.id, function (err, datos) {
             console.log(datos);
             res.render('Inmuebles/indexHabitacion', { title: 'Habitaciones', habitaciones:datos });
            
@@ -18,7 +18,7 @@ module.exports = {
         console.log(req.body);
         console.log(req.file.filename);
         habitacion.insertar(conexion, req.body, req.file, function (err) {
-             res.redirect('/habitaciones');
+             res.redirect('/');
         });
     },
     eliminar:function (req,res) {
@@ -34,7 +34,7 @@ module.exports = {
            }
 
            habitacion.borrar(conexion, req.params.id, function (err) {
-                res.redirect('/habitaciones');
+                res.redirect('/');
            });
         });
     },
@@ -65,6 +65,6 @@ module.exports = {
         if(req.body.nombreHabitacion){
         habitacion.actualizar(conexion, req.body, function (err) { });
         }
-         res.redirect('/habitaciones');
+         res.redirect('/');
     }
 }

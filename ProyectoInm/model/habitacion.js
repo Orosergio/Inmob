@@ -1,6 +1,6 @@
 module.exports = {
-    obtener:function(conexion,funcion){
-        conexion.query("SELECT H.idHabitacion, H.nombre, H.size, H.precio, H.fotografia, N.nombre as NivelName,H.idNivel, H.estado from habitacion H, nivel N where H.idNivel = N.idNivel;", funcion);
+    obtener:function(conexion, id, funcion){
+        conexion.query("SELECT distinct H.idHabitacion, H.nombre, H.size, H.precio, H.fotografia, N.nombre as NivelName,H.idNivel, H.estado from habitacion H, nivel N, Inmueble I, usuario u where H.idNivel = N.idNivel and N.idInmueble = I.idInmueble and I.idUser = ?;", [id] ,funcion);
     },
     obtenerDepartamento: function (conexion, funcion) {
         conexion.query("SELECT idDepartamento, nombre as NombreDep from Departamento;", funcion);

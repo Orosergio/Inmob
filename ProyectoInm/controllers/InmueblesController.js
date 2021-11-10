@@ -4,13 +4,13 @@ var borrar = require("fs");
 
 module.exports = {
     index: function(req, res){
-        
-        inmueble.obtener(conexion, function (err, datos) {
+        console.log(req.params.id);
+        inmueble.obtener(conexion, req.params.id, function (err, datos) {
             console.log(datos);
             res.render('Inmuebles/index', { title: 'Inmuebles', inmuebles:datos });
         });
     },
-    crear:function (req, res) {
+    crear: function (req, res) {
         res.render('Inmuebles/crear');
     },
 
@@ -18,7 +18,7 @@ module.exports = {
         console.log(req.body);
         console.log(req.file.filename);
         inmueble.insertar(conexion, req.body, req.file, function (err) {
-             res.redirect('/inmuebles');
+             res.redirect('/');
         });
     },
     eliminar:function (req,res) {
@@ -33,7 +33,7 @@ module.exports = {
            }
 
            inmueble.borrar(conexion, req.params.id, function (err) {
-                res.redirect('/inmuebles');
+                res.redirect('/');
            });
         });
     },
@@ -64,6 +64,6 @@ module.exports = {
         if(req.body.nombreInmueble){
         inmueble.actualizar(conexion, req.body, function (err) { });
         }
-         res.redirect('/inmuebles');
+         res.redirect('/');
     }
 }

@@ -1,6 +1,6 @@
 module.exports = {
-    obtener:function(conexion,funcion){
-        conexion.query("SELECT I.idInmueble, I.nombre, I.direccion, I.zona, I.precio, I.estado, I.deposito, I.noDepositos, U.nombreUsuario as Usuario, I.imagen FROM INMUEBLE I, USUARIO U WHERE I.idUser = U.idUsuario;", funcion);
+    obtener:function(conexion, id, funcion){
+        conexion.query("SELECT I.idInmueble, I.nombre, I.direccion, I.zona, I.precio, I.estado, I.deposito, I.noDepositos, U.nombreUsuario as Usuario, I.imagen FROM INMUEBLE I, USUARIO U WHERE I.idUser = U.idUsuario and I.idUser = ?", [id], funcion);
     },
     insertar:function(conexion, datos, archivos, funcion){
         conexion.query("INSERT INTO INMUEBLE (nombre, direccion, zona, precio, estado, deposito, noDepositos, idUser, imagen) VALUES (?,?,?,?,?,?,?,?,?)",[datos.nombreInmueble, datos.direccionInmueble, datos.zonaInmueble, datos.precioInmueble, datos.estadoInmueble, datos.depositoInmueble, datos.noDepositoInmueble, datos.userInmueble, archivos.filename], funcion);

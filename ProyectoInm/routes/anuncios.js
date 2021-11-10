@@ -20,9 +20,9 @@ var rutaAlmacen = multer.diskStorage(
 
 var cargar = multer({storage:rutaAlmacen});
 
-
-router.get('/', loginController.checkLoggedIn, anunciosController.index);
 router.get('/crearanuncio', loginController.checkLoggedIn, anunciosController.crear);
+router.get('/', loginController.checkLoggedIn, anunciosController.index);
+
 router.post("/",cargar.single("archivo"),anunciosController.guardar);
 router.post('/eliminar/:id', loginController.checkLoggedIn, anunciosController.eliminar);
 

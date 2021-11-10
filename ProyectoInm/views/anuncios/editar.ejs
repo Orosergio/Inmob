@@ -56,7 +56,7 @@
                           
                    <div class="form-group">
                     <label for="my-input">Youtube</label>
-                    <input id="my-input" value="<%=anuncio.youtubeVideo%>" class="form-control" type="text" name="youtube">
+                    <input id="my-input" value="NULL" disabled="true" class="form-control" type="text" name="youtube">
                 </div>
             
                 <div class="form-group">
@@ -67,8 +67,12 @@
 
                 <div class="form-group">
                     <label for="my-input">estado</label>
-                    <input id="my-input" value="<%=anuncio.estado%>" class="form-control" type="text" name="estado">
+                    <input id="my-input" class="form-control" value="1" type="text" name="estado">
                 </div> 
+                <div class="form-group">
+                    <label id="labelprueba" for="my-input">User</label>
+                    <input id="userInmueble" class="form-control" disabled="true" type="text" name="userInmueble">
+                </div>
 
                 <button class="btn btn-success" type="submit">Guardar</button>
                 <a class="btn btn-primary" href="/anuncios">Cancelar</a>
@@ -79,5 +83,13 @@
     </div>
 </div>
 
+<script>
+    obtener_localStorege();
+               function obtener_localStorege() {
+                   let userIdL = localStorage.getItem("idUserL");
+                   //alert("retrieve localstorage: " + userIdL);
+                   document.getElementById('userInmueble').value = userIdL;
+               }
+</script>
 
 <%- include ../layouts/pie.ejs %>   

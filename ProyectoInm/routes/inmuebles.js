@@ -14,12 +14,15 @@ var rutaAlmacen = multer.diskStorage({
         callback(null, fecha + "_" + file.originalname);
     }
 });
-
+let userIdL;
 var cargar = multer({storage:rutaAlmacen});
 
+
+
 /* GET home page. */
-router.get('/',loginController.checkLoggedIn, inmueblesController.index);
 router.get('/crear', loginController.checkLoggedIn, inmueblesController.crear);
+router.get('/:id',loginController.checkLoggedIn, inmueblesController.index);
+
 
 //aqui recibo información desde crear
 router.post("/", cargar.single("archivo") ,inmueblesController.guardar);

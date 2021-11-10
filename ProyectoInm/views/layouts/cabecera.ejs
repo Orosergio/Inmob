@@ -9,32 +9,40 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+  <label for="my-input"  id="rolInput">++</label>
+  <label for="my-input"  id="idUserInput">__</label>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="nav1">
         <a class="navbar-brand" href="/">Inmobiliaria</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                
+              
+              <li class="nav-item active">
+                <a class="nav-link" href="/anuncios/IndexUser"> Anuncios <span class="sr-only">(current)</span></a>
+            </li>
+
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Inmuebles
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/inmuebles/" onclick="location.href=this.href+valorUsuario;return false;">Catálogo de Inmuebles</a>
+                <a class="dropdown-item" href="/apartamentos/" onclick="location.href=this.href+valorUsuario;return false;">Catálogo de Apartamentos</a>
+                <a class="dropdown-item" href="/habitaciones/" onclick="location.href=this.href+valorUsuario;return false;">Catálogo de habitaciones</a>
+              </div>
+            </div>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="/pagosInmueble"> PagosInmueble <span class="sr-only">(current)</span></a>
+          </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/pagos"> Reservaciones </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/pagosInmueble"> PagosInmueble <span class="sr-only">(current)</span></a>
-                </li>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Inmuebles
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="/inmuebles">Catálogo de Inmuebles</a>
-                      <a class="dropdown-item" href="/apartamentos">Catálogo de Apartamentos</a>
-                      <a class="dropdown-item" href="/habitaciones">Catálogo de habitaciones</a>
-                    </div>
-                  </div>
-
+             
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Anuncios Admin
@@ -43,16 +51,59 @@
                       <a class="dropdown-item" href="/anuncios">Catálogo de Anuncios</a>
                       <a class="dropdown-item" href="/anuncios/crearanuncio">Crear anuncios</a>
                     </div>
-                  </div>
-                
-                <li class="nav-item active">
-                    <a class="nav-link" href="/anuncios/IndexUser"> Anuncios Usuario <span class="sr-only">(current)</span></a>
-                </li>
+                  </div> 
+               
             </ul>
             <form method="post" action="/logout">
                 <button class="btn btn-dark"> Log Out</button>
               </form>
         </div>
     </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="nav2">
+      <a class="navbar-brand" href="/">Inmobiliaria</a>
+      <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="my-nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/anuncios/IndexUser"> Anuncios <span class="sr-only">(current)</span></a>
+          </li>
+
+              <li class="nav-item active">
+                  <a class="nav-link" href="/pagosInmueble"> PagosInmueble <span class="sr-only">(current)</span></a>
+              </li>
+            
+            
+          </ul>
+          <form method="post" action="/logout">
+              <button class="btn btn-dark"> Log Out</button>
+            </form>
+      </div>
+  </nav>
     <div class="container">
+
+      <script>    
+      valorUsuario = localStorage.getItem("idUserL");
+      getLocalStorageFn();
+      
+      function getLocalStorageFn() {
+        let valueRols = localStorage.getItem("rolUser");
+        let valueUsuario = localStorage.getItem("idUserL");
+        
+        document.getElementById('rolInput').innerText = valueRols;
+        document.getElementById('idUserInput').innerText = valueUsuario;
+        
+        if(valueRols == 1){
+          document.getElementById('nav1').hidden=true;
+          document.getElementById('nav2').hidden=false;
+        }else if(valueRols == 0){
+          document.getElementById('nav1').hidden=false;
+          document.getElementById('nav2').hidden=true;
+        }  
+      }
+      
+
+      </script>
     

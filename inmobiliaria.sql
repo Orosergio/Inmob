@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2021 a las 07:14:27
+-- Tiempo de generación: 10-11-2021 a las 05:09:37
 -- Versión del servidor: 10.4.16-MariaDB
 -- Versión de PHP: 7.4.12
 
@@ -39,6 +39,13 @@ CREATE TABLE `alquiler` (
   `fechaCobro` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `alquiler`
+--
+
+INSERT INTO `alquiler` (`idAlquiler`, `idTipoAlquiler`, `idInmueble`, `idNivel`, `idHabitacion`, `precio`, `idInquilino`, `fechaIngreso`, `fechaCobro`) VALUES
+(9, 1, 26, 0, 0, 15000, 18, '2021-10-21 00:00:00', '2021-10-21 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -59,15 +66,22 @@ CREATE TABLE `anuncios` (
   `estado` tinyint(4) DEFAULT NULL,
   `idInmueble` int(11) DEFAULT NULL,
   `idPiso` int(11) DEFAULT NULL,
-  `idHab` int(11) DEFAULT NULL
+  `idHab` int(11) DEFAULT NULL,
+  `idUsuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `anuncios`
 --
 
-INSERT INTO `anuncios` (`idAnuncios`, `direccion`, `idDepartamento`, `idMunicipio`, `titulo`, `descripcion`, `emailAnunciante`, `telefono`, `youtubeVideo`, `imagenAnuncio`, `estado`, `idInmueble`, `idPiso`, `idHab`) VALUES
-(20, '8va avenida 15 calle zona 8', 10, 128, 'Se alquila inmueble completo en Jalapa', 'Se alquila inmueble completo en Jalapa, a dos cuadras de la municipalidad.', 'Admin1@gmail.com', 98563250, 'No disponible', '1634615078311_ap2.jpg', 1, 26, 0, 0);
+INSERT INTO `anuncios` (`idAnuncios`, `direccion`, `idDepartamento`, `idMunicipio`, `titulo`, `descripcion`, `emailAnunciante`, `telefono`, `youtubeVideo`, `imagenAnuncio`, `estado`, `idInmueble`, `idPiso`, `idHab`, `idUsuario`) VALUES
+(23, '6ta Calle Avenida América', 7, 77, 'Habitación Grande YYY', 'Se alquila Habitación grande para 4 personas', 'Admin1@gmail.com', 78965412, 'NULL', '1636336841742_habitacion1.jpg', 1, 26, 22, 16, 18),
+(24, 'Avenida Elena', 7, 77, 'Habitación Grande Far Far Away', 'Se alquila Habitación grande para 4 personas', 'Admin1@gmail.com', 34396597, 'NULL', '1636336841742_Casa1.jpg', 1, 26, 0, 0, 18),
+(25, 'Cerrito del carmen', 7, 77, 'Casa completa en cerrito del carmen', 'Se alquila habitaciones para persona individual o a parejas.', 'Admin2@gmail.com', 20203232, 'NULL', '1636339625087_Casa2.jpg', 1, 26, 0, 0, 17),
+(26, '6ta Calle', 7, 77, 'Habitación Grande', 'Se alquila Habitación grande para 4 personas', 'Admin2@gmail.com', 23443233, 'NULL', '1636339625087_Casa4.jpg', 1, 26, 0, 0, 17),
+(27, 'Plaza martì', 7, 77, 'Habitación GrandeAAA', 'Se alquila Habitación grande para 4 personas', 'Admin2@gmail.com', 89563202, 'NULL', '1636339625087_Casa4.jpg', 1, 26, 0, 0, 18),
+(28, 'PRUEBA DE INGRESO AWS 1', 7, 77, 'Habitación Grande AWS 1', 'Se alquila Habitación grande para 4 personas', 'Admin1@gmail.com', 89652301, 'NULL', '1636344996853_Casa3.jpg', 1, 26, 0, 0, 17),
+(29, 'PRUEBA DE INGRESO AWS 1', 7, 77, 'Habitación Grande AWS 2', 'Se alquila Habitación grande para 4 personas', 'Admin2@gmail.com', 98563201, 'NULL', '1636344996853_Casa4.jpg', 1, 26, 0, 0, 18);
 
 -- --------------------------------------------------------
 
@@ -97,6 +111,14 @@ CREATE TABLE `controlalquiler` (
   `descripcion` varchar(600) DEFAULT NULL,
   `estado` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `controlalquiler`
+--
+
+INSERT INTO `controlalquiler` (`idControl`, `idAlquiler`, `boletaPago`, `fechaBoleta`, `descripcion`, `estado`) VALUES
+(10, 9, '1635803059282_bpEnero.png', '2021-09-25', 'Se adjunta boleta de pago del mes de Enero', NULL),
+(14, 9, '1636002402286_bpFebreo.jpg', '2021-09-26', 'Se adjunta boleta de pago del mes de Enero', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,6 +175,17 @@ CREATE TABLE `habitacion` (
   `estado` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `habitacion`
+--
+
+INSERT INTO `habitacion` (`idHabitacion`, `nombre`, `size`, `precio`, `fotografia`, `idNivel`, `estado`) VALUES
+(16, 'Habitación 1 22', 5.5, 650, '1636326561836_habitacion1.jpg', 22, 1),
+(17, 'Habitación 2 22', 5.5, 650, '1636326561836_habitacion2.jpg', 22, 1),
+(18, 'Habitación 1', 5.5, 650, '1636327967258_habitacion3.jpg', 25, 1),
+(19, 'Habitación 2', 5.5, 650, '1636328420981_habitacion4.jpg', 25, NULL),
+(20, 'Habitación 1', 5.5, 650, '1636328420981_habitacion5.jpg', 26, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -190,8 +223,13 @@ CREATE TABLE `inmueble` (
 --
 
 INSERT INTO `inmueble` (`idInmueble`, `nombre`, `direccion`, `zona`, `precio`, `estado`, `deposito`, `noDepositos`, `idUser`, `imagen`) VALUES
-(26, 'Jalapa Town', '8va Avenida 15 calle', 2, 15000, 1, 14500, 4, 17, '1634615078303_House1.jpg'),
-(27, 'Oakland Mall', 'Diag. 6 13-01, Cdad. de Guatemala 01010', 10, 23500, 1, 25000, 15, 18, '1634615078303_apt6.jpg');
+(26, 'Hall Town', '8va Avenida 15 calle', 2, 15000, 1, 14500, 4, 17, '1634615078303_House1.jpg'),
+(27, 'Oakland Mall', 'Diag. 6 13-01, Cdad. de Guatemala 01010', 10, 23500, 1, 25000, 15, 18, '1634615078303_apt6.jpg'),
+(28, 'CasaReal', '6ta avenida A 15-48 zona 1', 11, 6500, 1, 5000, 2, 17, '1636227448579_Casa1.jpg'),
+(29, 'Casa las americas', '6ta avenida A 15-48 zona 1', 1, 6500, 1, 14500, 2, 17, '1636227448579_Casa3.jpg'),
+(30, 'SolucionPendeja', '6ta avenida A 15-48 zona 1', 11, 6500, 1, 5000, 2, 17, '1636298852726_Casa4.jpg'),
+(36, 'FORUM A', '2Avenida 10-50', 10, 32500, 1, 30000, 5, 18, '1636339625064_Casa4.jpg'),
+(37, 'HGB', '6ta avenida A 15-48', 11, 15000, 1, 5000, 2, 18, '1636339625064_Casa2.jpg');
 
 -- --------------------------------------------------------
 
@@ -586,9 +624,11 @@ CREATE TABLE `nivel` (
 --
 
 INSERT INTO `nivel` (`idNivel`, `nombre`, `altura`, `size`, `precio`, `fotografia`, `idInmueble`, `estado`) VALUES
-(22, 'Nivel 1 Jalapa', 3.5, 350, 2500, '1634615078315_apt3.jpg', 26, 1),
-(23, 'Nivel 2 Jalapa', 3.5, 350, 3500, '1634615078315_ap1.jpg', 26, 1),
-(24, 'Nivel 3 Jalapa', 3.5, 350, 4000, '1634615078315_ap1.jpg', 26, 1);
+(22, 'Nivel 1 Hall', 3.5, 350, 2500, '1634615078315_apt3.jpg', 26, 1),
+(23, 'Nivel 2 Hall', 3.5, 350, 3500, '1634615078315_ap1.jpg', 26, 1),
+(24, 'Nivel 3 Hall', 3.5, 350, 4000, '1634615078315_ap1.jpg', 26, 1),
+(25, 'APARTAMENTO27', 3.5, 350, 2500, '1636300963010_bpMarzo.webp', 27, 1),
+(26, 'APARTAMENTO27-2', 3.5, 350, 1500, '1636326320943_Apartamento2.jpg', 27, 1);
 
 -- --------------------------------------------------------
 
@@ -744,13 +784,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `alquiler`
 --
 ALTER TABLE `alquiler`
-  MODIFY `idAlquiler` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idAlquiler` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `idAnuncios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idAnuncios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `bitacora`
@@ -762,13 +802,13 @@ ALTER TABLE `bitacora`
 -- AUTO_INCREMENT de la tabla `controlalquiler`
 --
 ALTER TABLE `controlalquiler`
-  MODIFY `idControl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idControl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenanuncios`
@@ -780,7 +820,7 @@ ALTER TABLE `imagenanuncios`
 -- AUTO_INCREMENT de la tabla `inmueble`
 --
 ALTER TABLE `inmueble`
-  MODIFY `idInmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idInmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `mensajes`
@@ -792,7 +832,7 @@ ALTER TABLE `mensajes`
 -- AUTO_INCREMENT de la tabla `nivel`
 --
 ALTER TABLE `nivel`
-  MODIFY `idNivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idNivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoalquiler`

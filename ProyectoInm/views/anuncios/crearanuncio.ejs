@@ -17,12 +17,35 @@
 
                 <div class="form-group">
                     <label for="my-input">Departamento</label>
-                    <input id="my-input" class="form-control" type="text" name="idDepartamento">
-                </div>
+                    <div>
+                        <h3>Guatemala</h3>
+                    </div>                    
+                    <input id="my-input" class="form-control" value="7" hidden="true" type="text" name="idDepartamento">
+                </div>               
 
                 <div class="form-group">
                     <label for="my-input">Municipio</label>
-                    <input id="my-input" class="form-control" type="text" name="idMunicipio">
+                    <select id="municipioGuate" onchange="cambioMunicipio();" class="form-control form-control-lg">
+                        <option value=0 >Seleccione municipio</option>
+                        <option value="74">Amatitlán</option>
+                        <option value="75">Chinautla</option>
+                        <option value="76">Chuarrancho</option>
+                        <option value="77">Guatemala City</option>
+                        <option value="78">Fraijanes</option>
+                        <option value="79">Mixco</option>
+                        <option value="80">Palencia</option>
+                        <option value="81">San José del Golfo</option>
+                        <option value="82">San José Pinula</option>
+                        <option value="83">San Juan Sacatepéquez</option>
+                        <option value="84">San Miguel Petapa</option>
+                        <option value="85">San Pedro Ayampuc</option>
+                        <option value="86">San Pedro Sacatepéquez</option>
+                        <option value="87">San Raimundo</option>
+                        <option value="88">Santa Catarina Pinula</option>
+                        <option value="89">Villa Canales</option>
+                        <option value="90">Villa Nueva</option>                                          
+                    </select>
+                    <input id="idMunicipio" class="form-control" type="text" name="idMunicipio">
                 </div>
 
                 <div class="form-group">
@@ -63,7 +86,7 @@
                           
                    <div class="form-group">
                     <label for="my-input">Youtube</label>
-                    <input id="my-input" class="form-control" type="text" name="youtube">
+                    <input id="my-input" class="form-control" value="NULL" type="text" name="youtube">
                 </div>
             
                 <div class="form-group">
@@ -73,8 +96,12 @@
 
                 <div class="form-group">
                     <label for="my-input">estado</label>
-                    <input id="my-input" class="form-control" type="text" name="estado">
+                    <input id="my-input" class="form-control" value="1" type="text" name="estado">
                 </div> 
+                <div class="form-group">
+                    <label id="labelprueba" for="my-input">User</label>
+                    <input id="userInmueble" class="form-control" type="text" name="userInmueble">
+                </div>
 
                 <button class="btn btn-success" type="submit">Guardar</button>
                 <a class="btn btn-primary" href="/anuncios">Cancelar</a>
@@ -86,5 +113,18 @@
     </div>
 </div>
 
+<script>
+    obtener_localStorege();
+               function obtener_localStorege() {
+                   let userIdL = localStorage.getItem("idUserL");
+                   //alert("retrieve localstorage: " + userIdL);
+                   document.getElementById('userInmueble').value = userIdL;
+               }
 
+    function cambioMunicipio(){
+        var valueMuni = document.getElementById("municipioGuate").value;
+        document.getElementById('idMunicipio').value = valueMuni;
+    }
+
+</script>
 <%- include ../layouts/pie.ejs %>   

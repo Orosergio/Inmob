@@ -12,18 +12,7 @@ module.exports = {
     },
     crear:function (req, res) {
         
-        anuncio.obtenerInmueble(conexion,function (err,datos) {
-            //console.log(datos);
-            anuncio.obtenerDepartamento(conexion, function (err, datos2) {
-                //console.log(datos.concat(datos2));
-                anuncio.obtenerMunicipio(conexion, function (err, datos3) {
-                    console.log(datos.concat(datos2).concat(datos3));
-                    res.render('anuncios/crearanuncio',{title:'crearanuncio', anuncioInmuebles:datos, anuncioDeps:datos2, anuncioMuns:datos3});
-                });
-                
-            });
-             
-        });        
+         res.render('anuncios/crearanuncio');   
     },
     guardar:function (req, res) {
         console.log(req.body);
