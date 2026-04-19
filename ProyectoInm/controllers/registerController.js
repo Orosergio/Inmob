@@ -32,7 +32,7 @@ let createNewUser = async(req, res)=>{
             fullNames: req.body.fullNames,
             fullLastNames: req.body.fullLastNames,
             fotocopia: req.body.fotocopia,
-            estatus:req.body.estado
+            estatus:req.body.estatus
         };
         await registerService.createNewUser(newUser);
         return  res.redirect('/login');

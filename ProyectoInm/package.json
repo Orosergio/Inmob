@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "db:start": "powershell -ExecutionPolicy Bypass -File .\\scripts\\start-mariadb.ps1",
+    "db:import": "powershell -ExecutionPolicy Bypass -File .\\scripts\\import-db.ps1"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

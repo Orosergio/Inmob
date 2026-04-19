@@ -4,10 +4,7 @@ const loginController = require("../controllers/loginController");
 const registerController = require("../controllers/registerController");
 const auth = require("../validation/authValidation"); 
 const passport = require('passport'); 
-const initPassportLocal = require("../controllers/passportLocalController"); 
 const indexController = require('../controllers/indexController');
-
-initPassportLocal();
 
 /* GET home page. */
 router.get('/', loginController.checkLoggedIn, indexController.getHomePage);
